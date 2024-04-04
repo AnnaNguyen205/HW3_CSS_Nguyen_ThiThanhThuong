@@ -1,75 +1,239 @@
+/* General setting */
+.hidden {
+    display: none;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 body {
-    background-color: black;
-    /* these properties will be inheriyed by children elements */
+    background-image: url(../images/background.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family:'Courier New', Courier, monospace;
     font-size: 16px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    color: #fff
+    color: #322c2c;
 }
 
 main {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap:wrap;
 }
 
+/* Header */
 header > h1 {
-    text-align: center;
-    padding: 10px;
+    background-image :url(../images/header_photo.jpeg);
+    color: hsl(202, 100%, 6%);
+    font-size: 80px;
+    font-family:'Times New Roman', Times, serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
 }
 
-/* applied to all sections */
+header span {
+    border: none;
+    border-radius: 20px;
+    padding-left: 50px;
+    padding-right: 30px;
+    background-color: rgba(255, 255, 255, 0.865)
+}
+
+header span::after {
+    content: "📃";
+}
+
+/* section */
 section {
-    width: 300px;
+    width: 400px;
     border: 4px solid #fff;
-    border-radius: 8px;
-    margin: 10px 12px; 
-    /* top/bottom left/right */
-}
-
-section > h2 {
-    color: gray;
-    padding: 4px 8px;
+    border-radius: 15px;
+    margin: 10px 12px;
 }
 
 section:first-of-type {
-    border: 4px solid gray;
+    border: 4px solid rgb(217, 42, 112);
+    background-image: url(../images/todos.jpeg);
+    width: 400px;
+    height: 450px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-/* the id has a higher specifity, so it beats out the section selector */
+section:last-of-type {
+    border: 4px solid greenyellow;
+    background-image: url(../images/done.jpeg);
+    width: 400px;
+    height: 450px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 #inprogress {
-    border: 4px solid red;
-}
-
-#inprogress h2 {
-    color: red;
-}
-
-#done {
-    border: 4px solid green;
-}
-
-#done h2 {
-    color: green;
+    border: 4px solid rgb(228, 119, 72);
+    background-image: url(../images/inprogress.jpeg);
+    width: 400px;
+    height: 450px; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 ul {
     list-style-type: none;
-    padding: 0;
+    padding: 10px;
 }
 
 ul li {
-    padding: 6px 8px;
+    padding: 10px 10px;
     text-transform: uppercase;
 }
 
+li span:hover {
+    border: 1px solid #919090;
+    background-color: #919090;
+    border-radius: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+input {
+    margin: 0.6rem;
+    cursor: pointer;
+  }
+
+.todo input[type="checkbox"]:checked + span::after {
+    content:"✅";
+    margin-left: 5px;
+}
+
+.inprogress input[type="checkbox"]:checked + span::after {
+    content:"✔️";
+    margin-left: 5px;
+}
+
+.done input[type="checkbox"]:checked + span::after {
+    content:"🆙";
+    margin-left: 5px;
+}
+
+/* To Dos */
 .todo li:nth-child(odd) {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgb(217, 42, 112);
+    color: white;
 }
 
+.todo li:nth-child(even) {
+    background-color: #ffffffe1;
+}
+
+.todo-head span {
+    background-color: rgba(122, 120, 120, 0.719);
+    color: rgb(217, 42, 112);
+	text-shadow: 0px 0px 4px #ffffff;
+    padding: 10px 20px 10px 20px;
+    border-radius: 30px;
+}
+
+#todo > h2 {
+    color:#322c2c;
+}
+
+#todo > h2::after {
+    content: "⏱️";
+    margin-left: 5px;
+}
+
+/* In-progress */
 .inprogress li:nth-child(odd) {
-    background-color: rgba(255, 0, 0, 0.5);
+    background-color: rgb(228, 119, 72);
+    color:white;
 }
 
+.inprogress li:nth-child(even) {
+    background-color: #ffffffe1;
+}
+
+.inprogress-head span {
+    background-color: rgba(122, 120, 120, 0.719);
+    color: rgb(228, 119, 72);
+	text-shadow: 0px 0px 4px #ffffff;
+    padding: 10px 20px 10px 20px;
+    border-radius: 30px;
+}
+
+#inprogress > h2 {
+    color:#ce4747;
+}
+
+#inprogress > h2::after {
+    content: "⏳";
+    margin-left: 5px;
+}
+
+/* Done */
 .done li:nth-child(odd) {
-    background-color: rgba(0, 255, 0, 0.5);
+    background-color: greenyellow;
+    color:rgb(17, 19, 177);
+}
+
+.done li:nth-child(even) {
+    background-color: #ffffffe1;
+}
+
+.done-head span {
+    background-color: rgba(122, 120, 120, 0.719);
+    color: greenyellow;   
+	text-shadow: 0px 0px 4px #ffffff;
+    padding: 10px 20px 10px 20px;
+    border-radius: 30px;
+}
+
+#done > h2 {
+    color:rgb(10, 159, 159);
+}
+
+#done > h2::after {
+    content: "⌛";
+    margin-left: 5px;
+}
+
+section > h2 {
+    color: grey;
+    padding: 4px 8px;
+}
+
+
+
+/* footer */
+
+footer {
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer h3::after {
+    content: "❤️";
+    padding-left: 10px;
+}
+
+.sticky_footer {
+    position: sticky;
+    top: 100%;
+    height: 80px;
+    background-color: palevioletred;
 }
